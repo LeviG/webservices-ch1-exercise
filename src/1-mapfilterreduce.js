@@ -243,7 +243,7 @@ function oefening14(age) {
  * @returns {{ [key: number]: number }}
  */
 function oefening15() {
-  return {};
+  return impacts.filter(impactAfterYear(1945))
 }
 
 /**
