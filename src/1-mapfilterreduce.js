@@ -203,6 +203,8 @@ function oefening12() {
 // 🦉                                                                             🦉
 // 🦉 Gebruik deze techniek in de volgende oefening(en)                           🦉
 
+const isImpactGreaterThan = (threshold) => (impact) =>
+{return impact.mass > threshold};
 /**
  * Geef een array terug met de namen van alle meteorietinslagen die een grotere
  * massa hebben dan de meegegeven parameter.
