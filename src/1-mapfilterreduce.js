@@ -216,7 +216,7 @@ const isImpactGreaterThan = (threshold) => (impact) =>
  * @returns {string[]}
  */
 function oefening13(impactSize) {
-  return [];
+  return impacts.filter(isImpactGreaterThan(impactSize)).map(i => i.name);
 }
 
 /**
@@ -228,8 +228,11 @@ function oefening13(impactSize) {
  *
  * @returns {string[]}
  */
+
+const impactAfterYear = (year) => (impact) =>
+{return impact.year > year};
 function oefening14(age) {
-  return [];
+  return impacts.filter(impactAfterYear(age)).map(i => i.name)
 }
 
 /**
