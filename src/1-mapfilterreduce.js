@@ -230,7 +230,7 @@ function oefening13(impactSize) {
  */
 
 const impactAfterYear = (year) => (impact) =>
-new Date(impact.year).getFullYear > year;
+new Date(impact.year).getFullYear() > year;
 
 function oefening14(age) {
   return impacts.filter(impactAfterYear(age)).map(i => i.name)
