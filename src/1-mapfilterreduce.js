@@ -204,7 +204,7 @@ function oefening12() {
 // 🦉 Gebruik deze techniek in de volgende oefening(en)                           🦉
 
 const isImpactGreaterThan = (threshold) => (impact) =>
-{return impact.mass > threshold};
+impact.mass > threshold;
 /**
  * Geef een array terug met de namen van alle meteorietinslagen die een grotere
  * massa hebben dan de meegegeven parameter.
@@ -230,7 +230,8 @@ function oefening13(impactSize) {
  */
 
 const impactAfterYear = (year) => (impact) =>
-{return impact.year > year};
+new Date(impact.year).getFullYear > year;
+
 function oefening14(age) {
   return impacts.filter(impactAfterYear(age)).map(i => i.name)
 }
