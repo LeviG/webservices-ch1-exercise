@@ -15,7 +15,9 @@ const courses = require('../datasets/courses');
 function oefening1() {
   const courseNames = [];
 
-  // courses.forEach();
+  courses.forEach(c => 
+    courseNames.push(c.teacher)
+  );
 
   return courseNames;
 }
@@ -29,7 +31,12 @@ function oefening1() {
 function oefening2() {
   let idNameArray = [];
   
-  // courses.forEach();
+  courses.forEach( c => {
+    idNameArray.push({
+      id: c.id,
+      name: c.name
+    })
+  });
 
   return idNameArray;
 }
@@ -39,8 +46,7 @@ function oefening2() {
  * zouden gebruiken. Herschrijf oefening2 met behulp van `map`.
  */
 function oefening3() {
-  // return courses.map();
-  return [];
+  return courses.map((c) => ({id : c.id, name : c.name }));
 }
 
 /**
@@ -49,7 +55,12 @@ function oefening3() {
  * @returns {string[]}
  */
 function oefening4() {
-  return [];
+  const courses3hours = [];
+  courses.forEach( c => {
+    if (c.hours === 3) courses3hours.push(c);
+    
+  });
+  return courses3hours
 }
 
 /**
@@ -59,8 +70,7 @@ function oefening4() {
  * @returns {string[]}
  */
 function oefening5() {
-  // return courses.filter();
-  return [];
+  return courses.filter(c => c.hours === 3);
 }
 
 /**
@@ -71,7 +81,7 @@ function oefening5() {
  * @returns {string[]}
  */
 function oefening6() {
-  return [];
+  return courses.filter( c=> c.hours === 3).map( c => c.teacher);
 }
 
 /**
@@ -82,7 +92,13 @@ function oefening6() {
  * @returns {{ id: number; name: string; hours: number; teacher: string; }}
  */
 function oefening7() {
-  return {};
+  let grootsteId = null
+  courses.forEach( course => {
+    if(!grootsteId || course.id > grootsteId.id){
+      grootsteId = course
+    }
+  })
+  return grootsteId;
 }
 
 /**
@@ -94,7 +110,18 @@ function oefening7() {
  * @returns {{ id: number; name: string; hours: number; teacher: string; }}
  */
 function oefening8() {
-  return courses.reduce((acc, current) => {}, {});
+  const initialCourse = { id: 0, name: '', hours: 0, teacher: '' };
+
+  // Use reduce to find the course with the largest ID
+  const courseWithLargestId = courses.reduce((acc, current) => {
+    if (current.id > acc.id) {
+      return current; // Update the accumulator if current course has a larger ID
+    } else {
+      return acc; // Otherwise, keep the current accumulator
+    }
+  }, initialCourse);
+
+  return courseWithLargestId;
 }
 
 /**
@@ -103,7 +130,9 @@ function oefening8() {
  * @returns {number}
  */
 function oefening9() {
-  return 0;
+  return courses.reduce((acc, current) => {
+      return acc + current.hours;
+  }, 0);
 }
 
 // 🦉 Gebruik vanaf nu enkel `map`, `filter`, `reduce` om de oefeningen op 🦉
@@ -120,8 +149,18 @@ function oefening9() {
  * @returns {string}
  */
 function oefening10() {
-  // return courses.reduce();
-  return "";
+  const initialCourse = { id: Infinity, name: '', hours: 0, teacher: '' };
+
+  // Use reduce to find the course with the largest ID
+  const courseWithSmallestId = courses.reduce((acc, current) => {
+    if (current.id < acc.id) {
+      return current; // Update the accumulator if current course has a larger ID
+    } else {
+      return acc; // Otherwise, keep the current accumulator
+    }
+  }, initialCourse);
+
+  return courseWithSmallestId.teacher;
 }
 
 // 🦉 Gebruik de `impacts` dataset vanaf nu, niet meer de `courses` 🦉
@@ -131,9 +170,12 @@ function oefening10() {
  *
  * @returns {number}
  */
+const hasGeolocation = (impact) => impact.geolocation;
+const hasNoGeolocation = (impact) => !impact.geolocation;
+
 function oefening11() {
-//  return impacts.filter();
- return 0;
+  return impacts.filter(i => hasGeolocation(i)).length;
+
 }
 
 /**
@@ -143,8 +185,7 @@ function oefening11() {
  * uit oefening11.
  */
 function oefening12() {
-  // return impacts.filter();
-  return [];
+  return impacts.filter(i => hasNoGeolocation(i)).map(i => i.name);
 }
 
 
