@@ -294,7 +294,7 @@ function oefening18(id) {
  * @returns {number[]}
  */
 function oefening19() {
-  return [];
+  return impacts.sort();
 }
 
 /**
