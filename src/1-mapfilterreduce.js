@@ -270,7 +270,7 @@ function oefening16() {
  * @returns {boolean}
  */
 function oefening17() {
-  return undefined;
+  return impacts.every(hasGeolocation)
 }
 
 /**
@@ -281,6 +281,7 @@ function oefening17() {
  *
  * @returns {boolean}
  */
+
 function oefening18(id) {
   return undefined;
 }
