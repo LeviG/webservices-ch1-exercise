@@ -281,9 +281,10 @@ function oefening17() {
  *
  * @returns {boolean}
  */
+const hasId = (id) => (impact) => parseInt(impact.id) == id
 
 function oefening18(id) {
-  return undefined;
+  return impacts.includes(hasId(id));
 }
 
 /**
