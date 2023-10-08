@@ -305,8 +305,18 @@ function oefening19() {
  * 
  * @returns {[number, number]}
  */
+
+const pickMass = ({ mass }) => parseInt(mass);
+
 function oefening20() {
-  return [];
+  const {min, max} = impacts.map(pickMass)
+                            .filter(Boolean)
+                            .reduce(({min, max}, mass) => ({
+                              min: Math.min(mass, min),
+                              max: Math.max(mass, max)
+  }), {min: Number.MAX_VALUE, max: Number.MIN_VALUE});
+
+  return {min, max};
 }
 
 //-------------------------------------------------------------------
