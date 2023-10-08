@@ -243,7 +243,12 @@ function oefening14(age) {
  * @returns {{ [key: number]: number }}
  */
 function oefening15() {
-  return impacts.filter(impactAfterYear(1945))
+  const impactCounts = {};
+  impacts.filter(impactAfterYear(1945)).forEach( i => {
+    const year = new Date(i.year).getFullYear();
+    impactCounts[year] = (impactCounts[year] || 0) + 1;
+  })
+  return impactCounts;
 }
 
 /**
@@ -254,7 +259,7 @@ function oefening15() {
  * @returns {boolean}
  */
 function oefening16() {
-  return undefined;
+  return (impacts.filter(impactAfterYear(2012)).length > 0)
 }
 
 /**
